@@ -2867,3 +2867,106 @@ a {
         font-size: 0.86rem;
     }
 }
+
+/* ==========================================================
+   CORRECTION MENU MOBILE PLEIN ÉCRAN
+   À conserver tout à la fin du fichier CSS
+========================================================== */
+
+@media (max-width: 900px) {
+    .site-header {
+        /*
+         * Un fond opaque évite certains bugs mobiles liés
+         * à backdrop-filter et aux éléments positionnés.
+         */
+        background: var(--off-white);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .main-navigation {
+        position: absolute;
+        z-index: 999;
+        top: 100%;
+        right: 0;
+        bottom: auto;
+        left: 0;
+
+        width: 100%;
+
+        /* Fallback pour les anciens navigateurs */
+        height: calc(100vh - 78px);
+
+        /* Hauteur dynamique correcte sur les navigateurs mobiles */
+        height: calc(100dvh - 78px);
+
+        padding: 1.5rem 20px 2rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        background: var(--off-white);
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-12px);
+
+        transition:
+            opacity var(--transition),
+            visibility var(--transition),
+            transform var(--transition);
+    }
+
+    .main-navigation.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .main-navigation a {
+        display: flex;
+        min-height: 64px;
+        align-items: center;
+        flex: 0 0 auto;
+        padding: 1rem 0;
+
+        border-bottom: 1px solid var(--border);
+        font-size: 1.25rem;
+    }
+
+    .main-navigation .nav-contact {
+        min-height: 56px;
+        justify-content: center;
+        margin-top: 1.2rem;
+        padding: 1rem;
+        border-bottom: 0;
+        text-align: center;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+        touch-action: none;
+    }
+
+    /*
+     * Le menu reste utilisable au tactile même si le défilement
+     * général de la page est bloqué.
+     */
+    body.menu-open .main-navigation {
+        touch-action: pan-y;
+    }
+}
+
+@media (max-width: 620px) {
+    .main-navigation {
+        /*
+         * Le header mesure 70 px sur les petits écrans.
+         */
+        height: calc(100vh - 70px);
+        height: calc(100dvh - 70px);
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+}
