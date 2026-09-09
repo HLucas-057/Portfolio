@@ -1743,7 +1743,7 @@ ul {
 
 .contact-copy h2 {
     margin-bottom: 1.7rem;
-    font-size: clamp(4rem, 10vw, 9rem);
+    font-size: clamp(4rem, 7vw, 9rem);
     letter-spacing: -0.075em;
     line-height: 0.85;
 }
