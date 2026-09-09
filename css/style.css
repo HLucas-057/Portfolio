@@ -743,6 +743,7 @@ ul {
 
 .eyebrow-light {
     color: var(--mint-500);
+    margin-bottom: 1.5625rem;
 }
 
 .opportunity-card h2 {
